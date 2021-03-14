@@ -1,0 +1,26 @@
+#!/hint/zsh
+
+# name of your repo
+REPO_NAME='asa1253'
+
+# your gpg key id
+GPGKEY='F9834579DF434A74'
+
+MAKEPKG_CONF="
+CFLAGS='-march=skylake -O2 -pipe -fno-plt'
+CXXFLAGS='-march=skylake -O2 -pipe -fno-plt'
+MAKEFLAGS='-j$(nproc)'
+BUILDENV=(!distcc !color !ccache !check sign)
+GPGKEY='$GPGKEY'
+PACKAGER='MR.cui <asa1253@live.com>'
+COMPRESSZST=(zstd -z -c -q -T0 -18 -)
+PKGEXT='.pkg.tar.zst'
+"
+
+# where to deploy your packages
+SERVER='aur.pcdn.eu.org'
+
+# where to put your script
+SCRIPT='aur.pcdn.eu.org/script.7z'
+# the password to protect your script
+PASSWORD='asa159786'
